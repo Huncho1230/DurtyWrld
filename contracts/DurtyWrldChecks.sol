@@ -73,7 +73,7 @@ contract DurtyWrldChecks is ERC721, Ownable {
      * Token URI
      * @dev uses variables stored in the contract to produce json metadata
      * @param tokenId the id of the token to get metadata for
-     * @return base64 encoded json metadata string
+     * @return string base64 encoded json metadata string
      */
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
         string memory metadata = string(
@@ -88,6 +88,15 @@ contract DurtyWrldChecks is ERC721, Ownable {
         string memory json = Base64.encode(bytes(metadata));
 
         return string(abi.encodePacked("data:application/json;base64,", json));
+    }
+
+    /**
+     * Total Supply
+     * @dev returns the number of tokens minted
+     * @return uint256 total number of tokens minted
+     */
+    function totalSupply() public view returns (uint256) {
+        return _tokenIdCounter.current() + 1;
     }
 
     // internal
