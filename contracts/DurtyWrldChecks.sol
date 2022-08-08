@@ -96,7 +96,7 @@ contract DurtyWrldChecks is ERC721, Ownable {
      * @return uint256 total number of tokens minted
      */
     function totalSupply() public view returns (uint256) {
-        return _tokenIdCounter.current() + 1;
+        return _tokenIdCounter.current();
     }
 
     // internal
